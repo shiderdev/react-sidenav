@@ -1,11 +1,14 @@
 import "app.css";
 import "normalize.css";
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import Statistics from "./pages/Statistics";
-import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
+import ReactSidenav from "./components/react-sidenav/ReactSidenav";
+import "primeicons/primeicons.css";
+import menu from "./menu";
+import ReactSidenavWithPrimereact from "./components/react-sidenav-with-primereact/ReactSidenavWithPrimereact";
 
 const demoEnum = {
   reactSidenav: "React Sidenav",
@@ -15,9 +18,18 @@ const demoEnum = {
 
 const App = () => {
   const [demo, setDemo] = useState(demoEnum.reactSideNavWithPrimereact);
+  const [sidenavIsExpanded, setSidenavIsExpanded] = useState(false);
   const onSelectDemo = (selectedDemo) => setDemo(selectedDemo);
-
   const history = useHistory();
+  // const menuList = useMemo(() => menu(), [history]);
+  const navigationFactory = useCallback(
+    (route) => () => {
+      if (typeof route !== "string") return;
+
+      history.push(route);
+    },
+    [history]
+  );
 
   return (
     <>
@@ -46,31 +58,36 @@ const App = () => {
           {demoEnum.reactSideNavWithPrimereactImproved}
         </button>
       </header>
-      <div>
-        <SideNav>
-          <SideNav.Toggle />
-          <SideNav.Nav selected={history?.location?.pathname}>
-            <NavItem eventKey="home">
-              <NavIcon>
-                <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
-              </NavIcon>
-              <NavText>Home</NavText>
-            </NavItem>
-            <NavItem eventKey="charts">
-              <NavIcon>
-                <i className="fa fa-fw fa-line-chart" style={{ fontSize: "1.75em" }} />
-              </NavIcon>
-              <NavText>Charts</NavText>
-              <NavItem eventKey="charts/linechart">
-                <NavText>Line Chart</NavText>
-              </NavItem>
-              <NavItem eventKey="charts/barchart">
-                <NavText>Bar Chart</NavText>
-              </NavItem>
-            </NavItem>
-          </SideNav.Nav>
-        </SideNav>
-        <main style={{ backgroundColor: "lightcoral", display: "flex" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
+        {demo === demoEnum.reactSidenav ? (
+          <ReactSidenav
+            isExpanded={sidenavIsExpanded}
+            setIsExpanded={setSidenavIsExpanded}
+            menu={menu(navigationFactory)}
+          />
+        ) : null}
+        {demo === demoEnum.reactSideNavWithPrimereact ? (
+          <ReactSidenavWithPrimereact
+            isExpanded={sidenavIsExpanded}
+            setIsExpanded={setSidenavIsExpanded}
+            menu={menu(navigationFactory)}
+          />
+        ) : null}
+
+        <main
+          style={{
+            backgroundColor: "lightcoral",
+            display: "flex",
+            marginLeft: sidenavIsExpanded ? "240px" : "64px",
+            transition: "margin-left 0.2s",
+            padding: "10px 15px",
+          }}
+        >
           <Switch>
             <Route path="/" exact component={Home} key="home" />
             <Route path="/statistics" component={Statistics} key="statistics" />
@@ -79,37 +96,6 @@ const App = () => {
         </main>
       </div>
     </>
-    // <Router>
-    //   <div>
-    //     <nav>
-    //       <ul>
-    //         <li>
-    //           <Link to="/">Home</Link>
-    //         </li>
-    //         <li>
-    //           <Link to="/about">About</Link>
-    //         </li>
-    //         <li>
-    //           <Link to="/users">Users</Link>
-    //         </li>
-    //       </ul>
-    //     </nav>
-
-    //     {/* A <Switch> looks through its children <Route>s and
-    //         renders the first one that matches the current URL. */}
-    //     <Switch>
-    //       <Route path="/about">
-    //         <About />
-    //       </Route>
-    //       <Route path="/users">
-    //         <Users />
-    //       </Route>
-    //       <Route path="/">
-    //         <Home />
-    //       </Route>
-    //     </Switch>
-    //   </div>
-    // </Router>
   );
 };
 

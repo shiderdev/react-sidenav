@@ -1,0 +1,19 @@
+nav.react-sidenav{
+  top: 70px;
+}
+
+.react-sidenav a{
+  text-decoration: none;
+}
+
+
+.react-sidenav .nav-item .icon-wrapper{
+  display: flex;
+  width: 64px;
+  height: 50px;
+}
+
+.react-sidenav .nav-item i{
+  margin: auto;
+  font-size: 1.75em;
+}

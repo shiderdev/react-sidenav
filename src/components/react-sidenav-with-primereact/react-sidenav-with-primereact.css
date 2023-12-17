@@ -1,0 +1,78 @@
+.p-menuitem-icon {
+  font-size: 1.53em;
+}
+
+/* compact menu with tiered menu */
+.p-tieredmenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0;
+  border-radius: 0;
+  background-color: #db3d44;
+  border: none;
+  transition: width 0.2s;
+}
+
+.p-tieredmenu .p-menuitem-link .p-menuitem-icon{
+  color: #f9dcdd;
+}
+
+.p-tieredmenu .p-menuitem-link {
+    height: 50px;
+}
+.p-tieredmenu .toggle-button .p-menuitem-link {
+    height: 64px;
+}
+
+.p-tieredmenu > ul > .p-menuitem:hover {
+  opacity: 0.15;
+}
+
+.p-tieredmenu > ul > .p-menuitem > .p-menuitem-link > .p-menuitem-text {
+  display: none;
+}
+
+.p-tieredmenu .p-menuitem-link .p-menuitem-icon {
+  margin: 0;
+}
+
+
+ /* expanded menu with panel menu */
+.p-panelmenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0;
+  border-radius: 0;
+  transition: width 0.2s;
+}
+
+.p-panelmenu .p-panelmenu-panel .p-panelmenu-header-link{
+  height: 50px;
+}
+
+.p-panelmenu .p-panelmenu-panel.toggle-button .p-panelmenu-header-link{
+  height: 64px;
+}
+
+.p-panelmenu .p-panelmenu-panel {
+  margin: 0;
+}
+
+.p-panelmenu .p-panelmenu-header > .p-panelmenu-header-link {
+  padding: 1rem 1rem;
+  border: none;
+  border-radius: 0;
+}
+
+.p-panelmenu .p-panelmenu-icon.pi.pi-fw.pi-angle-down,
+.p-panelmenu .p-panelmenu-icon.pi.pi-fw.pi-angle-right,
+.p-panelmenu .p-panelmenu-icon.pi.pi-chevron-down,
+.p-panelmenu .p-panelmenu-icon.pi.pi-chevron-right{
+  /* display: none; */
+  order: 3;
+  margin-left: auto;
+}
