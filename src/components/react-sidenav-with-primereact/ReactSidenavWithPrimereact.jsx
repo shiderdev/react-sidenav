@@ -1,23 +1,17 @@
-import { TieredMenu } from "primereact/tieredmenu";
 import { PanelMenu } from "primereact/panelmenu";
-import PropTypes from "prop-types";
-import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import { TieredMenu } from "primereact/tieredmenu";
+import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
 import "./react-sidenav-with-primereact.css";
 
 const ReactSidenavWithPrimereact = ({ isExpanded, setIsExpanded, menu }) => {
+  const location = useLocation();
   return (
-    <div
-      style={{
-        transition: "width 0.2s",
-        width: isExpanded ? "240px" : "64px",
-        position: "absolute",
-        top: "70px",
-        bottom: 0,
-        left: 0,
-      }}
-    >
+    <>
       <PanelMenu
+        className="sidenav-expanded"
         model={[
           {
             id: "toggle",
@@ -30,13 +24,13 @@ const ReactSidenavWithPrimereact = ({ isExpanded, setIsExpanded, menu }) => {
         ]}
         orientation="vertical"
         style={{
-          zIndex: isExpanded ? 2 : -1,
           visibility: isExpanded ? "visible" : "hidden",
           width: isExpanded ? "240px" : "64px",
         }}
       />
 
       <TieredMenu
+        className="sidenav-retracted"
         model={[
           {
             id: "toggle",
@@ -49,12 +43,11 @@ const ReactSidenavWithPrimereact = ({ isExpanded, setIsExpanded, menu }) => {
         ]}
         orientation="vertical"
         style={{
-          zIndex: isExpanded ? -1 : 2,
           visibility: isExpanded ? "hidden" : "visible",
           width: isExpanded ? "240px" : "64px",
         }}
       />
-    </div>
+    </>
   );
 };
 

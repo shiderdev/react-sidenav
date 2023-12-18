@@ -15,6 +15,31 @@
  * className	string	null	Style class of the menuitem.
  * template	any	null
  */
+
+import { matchPath } from "react-router";
+
+const template = (item, options) => {
+  console.log("item", item);
+  console.log("options", options);
+  const isExactMatch = matchPath(window.location.pathname, { path: item.id, exact: true });
+  const isRelativeMatch = matchPath(window.location.pathname, { path: item.id });
+  return (
+    /* custom element */
+    <a
+      className={
+        options.className +
+        `${isExactMatch ? " route-is-exact-match" : ""} + ${
+          isRelativeMatch ? " route-is-relative-match" : ""
+        }`
+      }
+      target={item.target}
+      onClick={options.onClick}
+    >
+      {item.icon !== undefined ? <span className={options.iconClassName}></span> : null}
+      <span className={options.labelClassName}>{item.label}</span>
+    </a>
+  );
+};
 const menu = (navigateFactory) => [
   {
     label: "Home",
@@ -27,27 +52,24 @@ const menu = (navigateFactory) => [
     id: "/statistics",
     icon: "pi pi-chart-bar",
     command: navigateFactory("/statistics"),
-    expanded: true,
     items: [
       {
         label: "Quarterly reports",
         id: "/statistics/quarterly-reports",
-        // icon: "pi pi-calendar",
         command: navigateFactory("/statistics/quarterly-reports"),
-        expanded: true,
+        template: template,
         items: [
           {
             label: "Human resources",
             id: "/statistics/quarterly-reports/human-resources",
-            // icon: "pi pi-calendar",
             command: navigateFactory("/statistics/quarterly-reports/human-resources"),
+            template: template,
           },
           {
             label: "Research",
             id: "/statistics/quarterly-reports/research",
-            // icon: "pi pi-calendar",
             command: navigateFactory("/statistics/quarterly-reports/research"),
-            expanded: true,
+            template: template,
           },
         ],
       },
@@ -55,6 +77,7 @@ const menu = (navigateFactory) => [
         label: "Profits",
         id: "/statistics/annual-profit",
         command: navigateFactory("/statistics/annual-profit"),
+        template: template,
       },
     ],
   },

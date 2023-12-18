@@ -1,14 +1,14 @@
 import "app.css";
 import "normalize.css";
-import { useState, useMemo, useCallback } from "react";
+import "primeicons/primeicons.css";
+import { useCallback, useState } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
+import ReactSidenavWithPrimereact from "./components/react-sidenav-with-primereact/ReactSidenavWithPrimereact";
+import ReactSidenav from "./components/react-sidenav/ReactSidenav";
+import menu from "./menu";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import Statistics from "./pages/Statistics";
-import ReactSidenav from "./components/react-sidenav/ReactSidenav";
-import "primeicons/primeicons.css";
-import menu from "./menu";
-import ReactSidenavWithPrimereact from "./components/react-sidenav-with-primereact/ReactSidenavWithPrimereact";
 
 const demoEnum = {
   reactSidenav: "React Sidenav",
@@ -21,7 +21,6 @@ const App = () => {
   const [sidenavIsExpanded, setSidenavIsExpanded] = useState(false);
   const onSelectDemo = (selectedDemo) => setDemo(selectedDemo);
   const history = useHistory();
-  // const menuList = useMemo(() => menu(), [history]);
   const navigationFactory = useCallback(
     (route) => () => {
       if (typeof route !== "string") return;
