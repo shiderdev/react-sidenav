@@ -19,8 +19,6 @@
 import { matchPath } from "react-router";
 
 const template = (item, options) => {
-  console.log("item", item);
-  console.log("options", options);
   const isExactMatch = matchPath(window.location.pathname, { path: item.id, exact: true });
   const isRelativeMatch = matchPath(window.location.pathname, { path: item.id });
   return (

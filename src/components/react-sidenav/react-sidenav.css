@@ -1,5 +1,6 @@
 nav.react-sidenav{
-  top: 70px;
+  top: 120px;
+  position: fixed;
 }
 
 .react-sidenav a{

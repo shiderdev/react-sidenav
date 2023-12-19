@@ -37,7 +37,6 @@ const ReactSidenav = ({ isExpanded, setIsExpanded, menu }) => {
       className="react-sidenav"
       expanded={isExpanded}
       onToggle={(some) => {
-        console.log("some", some);
         setIsExpanded(some);
       }}
       onSelect={(eventKey) => {

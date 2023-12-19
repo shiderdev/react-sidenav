@@ -9,60 +9,33 @@ import menu from "./menu";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import Statistics from "./pages/Statistics";
+import ReactSidenavWithPrimereactNoStyle from "./components/react-sidenav-with-primereact-no-style/ReactSidenavWithPrimereactNoStyle";
+import Header from "./components/header/Header";
 
 const demoEnum = {
-  reactSidenav: "React Sidenav",
-  reactSideNavWithPrimereact: "React Sidenav with Primereact",
-  reactSideNavWithPrimereactImproved: "React Sidenav with Primereact (Improved)",
+  reactSidenav: "@trendmicro/react-sidenav",
+  reactSideNavWithPrimereact: "React Side Navigation with Primereact Menus",
+  reactSideNavWithPrimereactUnstyled:
+    "React Side Navigation with Primereact Menus(Unstyled for comparison)",
 };
 
 const App = () => {
   const [demo, setDemo] = useState(demoEnum.reactSideNavWithPrimereact);
   const [sidenavIsExpanded, setSidenavIsExpanded] = useState(false);
-  const onSelectDemo = (selectedDemo) => setDemo(selectedDemo);
   const history = useHistory();
   const navigationFactory = useCallback(
     (route) => () => {
       if (typeof route !== "string") return;
-
       history.push(route);
     },
     [history]
   );
+  const onDemoChange = useCallback((e) => setDemo(e.target.value), [setDemo]);
 
   return (
     <>
-      <header style={{ backgroundColor: "cyan" }}>
-        <button
-          style={{ backgroundColor: demo === demoEnum.reactSidenav ? "grey" : "lightyellow" }}
-          onClick={() => onSelectDemo(demoEnum.reactSidenav)}
-        >
-          {demoEnum.reactSidenav}
-        </button>
-        <button
-          style={{
-            backgroundColor: demo === demoEnum.reactSideNavWithPrimereact ? "grey" : "lightyellow",
-          }}
-          onClick={() => onSelectDemo(demoEnum.reactSideNavWithPrimereact)}
-        >
-          {demoEnum.reactSideNavWithPrimereact}
-        </button>
-        <button
-          style={{
-            backgroundColor:
-              demo === demoEnum.reactSideNavWithPrimereactImproved ? "grey" : "lightyellow",
-          }}
-          onClick={() => onSelectDemo(demoEnum.reactSideNavWithPrimereactImproved)}
-        >
-          {demoEnum.reactSideNavWithPrimereactImproved}
-        </button>
-      </header>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
+      <Header demo={demo} onDemoChange={onDemoChange} demoEnum={demoEnum} />
+      <div className="under-header-area">
         {demo === demoEnum.reactSidenav ? (
           <ReactSidenav
             isExpanded={sidenavIsExpanded}
@@ -77,14 +50,18 @@ const App = () => {
             menu={menu(navigationFactory)}
           />
         ) : null}
+        {demo === demoEnum.reactSideNavWithPrimereactUnstyled ? (
+          <ReactSidenavWithPrimereactNoStyle
+            isExpanded={sidenavIsExpanded}
+            setIsExpanded={setSidenavIsExpanded}
+            menu={menu(navigationFactory)}
+          />
+        ) : null}
 
         <main
           style={{
-            backgroundColor: "lightcoral",
-            display: "flex",
             marginLeft: sidenavIsExpanded ? "240px" : "64px",
             transition: "margin-left 0.2s",
-            padding: "10px 15px",
           }}
         >
           <Switch>

@@ -4,8 +4,8 @@
 
 /* compact menu with tiered menu */
 .sidenav-retracted.p-tieredmenu {
-  position: absolute;
-  top: 70px;
+  position: fixed;
+  top: 120px;
   left: 0;
   bottom: 0;
   padding: 0;
@@ -57,7 +57,7 @@
   color: inherit;color: #fff;
 }
 
-.sidenav-retracted.p-tieredmenu .p-menuitem.p-menuitem-active > a
+.sidenav-retracted.p-tieredmenu ul:not(.p-submenu-list) > .p-menuitem.p-menuitem-active > a
 {
   background-color:  #a93232;
 }
@@ -66,8 +66,8 @@
 
  /* expanded menu with a panel menu */
 .sidenav-expanded.p-panelmenu {
-  position: absolute;
-  top: 70px;
+  position: fixed;
+  top: 120px;
   left: 0;
   bottom: 0;
   padding: 0;
@@ -97,7 +97,7 @@
 
 .sidenav-expanded.p-panelmenu .p-panelmenu-header,
 .sidenav-expanded.p-panelmenu .p-panelmenu-content{
-  color: #f9dcdd;
+  color: #f9dcddb3;
 }
 
 .sidenav-expanded.p-panelmenu .p-panelmenu-header:hover,
@@ -148,10 +148,6 @@
 {
   color: inherit;
 }
-
-/* .sidenav-expanded.p-panelmenu .p-panelmenu-header .p-menuitem-icon{
-  opacity: 0.7;
-} */
 
 
 .sidenav-expanded.p-panelmenu .p-panelmenu-content .p-submenu-list .p-menuitem > a{
