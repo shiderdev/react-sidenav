@@ -2,15 +2,13 @@ import "app.css";
 import "normalize.css";
 import "primeicons/primeicons.css";
 import { useCallback, useState } from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import Routes from "./Routes";
+import Header from "./components/header/Header";
+import ReactSidenavWithPrimereactNoStyle from "./components/react-sidenav-with-primereact-no-style/ReactSidenavWithPrimereactNoStyle";
 import ReactSidenavWithPrimereact from "./components/react-sidenav-with-primereact/ReactSidenavWithPrimereact";
 import ReactSidenav from "./components/react-sidenav/ReactSidenav";
 import menu from "./menu";
-import About from "./pages/About";
-import Home from "./pages/Home";
-import Statistics from "./pages/Statistics";
-import ReactSidenavWithPrimereactNoStyle from "./components/react-sidenav-with-primereact-no-style/ReactSidenavWithPrimereactNoStyle";
-import Header from "./components/header/Header";
 
 const demoEnum = {
   reactSidenav: "@trendmicro/react-sidenav",
@@ -64,11 +62,7 @@ const App = () => {
             transition: "margin-left 0.2s",
           }}
         >
-          <Switch>
-            <Route path="/" exact component={Home} key="home" />
-            <Route path="/statistics" component={Statistics} key="statistics" />
-            <Route path="/about" component={About} key="about" />
-          </Switch>
+          <Routes />
         </main>
       </div>
     </>

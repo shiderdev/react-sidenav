@@ -1,12 +1,12 @@
 import pageContent from "../utils/page-content";
 
-const Statistics = () => {
+const Settings = () => {
   return (
     <>
-      <div>Statistics</div>
+      <h1>Settings</h1>
       <p>{pageContent}</p>
     </>
   );
 };
 
-export default Statistics;
+export default Settings;

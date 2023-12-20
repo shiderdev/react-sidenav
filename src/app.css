@@ -15,6 +15,10 @@ body {
   /* overflow: auto; */
 }
 
+#app h1{
+  margin-top: 0;
+}
+
 header {
   position: fixed;
   left: 0;

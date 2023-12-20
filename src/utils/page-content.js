@@ -9,6 +9,6 @@ const pageContent = new LoremIpsum({
     max: 16,
     min: 4,
   },
-}).generateParagraphs(7);
+}).generateParagraphs(11);
 
 export default pageContent;

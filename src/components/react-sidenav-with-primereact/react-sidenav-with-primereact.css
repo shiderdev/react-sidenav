@@ -16,7 +16,7 @@
 }
 
 
-.sidenav-retracted.p-tieredmenu > a {
+.sidenav-retracted.p-tieredmenu ul:not(.p-submenu-list) > .p-menuitem:not(.toggle-button) > a {
     height: 50px;
 }
 .sidenav-retracted.p-tieredmenu .toggle-button > a {
@@ -44,6 +44,10 @@
 .sidenav-retracted.p-tieredmenu .p-menuitem:not(.p-disabled).p-menuitem-active > a .p-menuitem-text {
   color: #495057;
   background-color: #eee;
+}
+
+.sidenav-retracted.p-tieredmenu .p-submenu-list .p-menuitem > a {
+  padding: 8px 24px;
 }
 
 
@@ -94,6 +98,12 @@
   cursor: default;
 }
 
+.sidenav-retracted.p-tieredmenu ul:not(.p-submenu-list) > .p-menuitem.toggle-button > a:hover .p-menuitem-icon::before,
+.sidenav-retracted.p-tieredmenu ul:not(.p-submenu-list) > .p-menuitem.toggle-button > a:hover {
+  color: #f9dcddb3;
+  background-color: #db3d44;
+}
+
 
 
  /* expanded menu with a panel menu */
@@ -132,7 +142,12 @@
   color: #f9dcddb3;
 }
 
+.sidenav-expanded.p-panelmenu .p-panelmenu-header > a .p-menuitem-text{
+  color: #f9dcdd;
+}
+
 .sidenav-expanded.p-panelmenu .p-panelmenu-header:hover,
+.sidenav-expanded.p-panelmenu .p-panelmenu-header > a:hover .p-menuitem-text,
 .sidenav-expanded.p-panelmenu .p-panelmenu-content .p-submenu-list .p-menuitem > a:not(.p-disabled):hover .p-menuitem-text{
   color: #fff;
 
@@ -167,6 +182,11 @@
 .sidenav-expanded.p-panelmenu .p-panelmenu-content .p-submenu-list .p-menuitem > a:not(.p-disabled):hover  {
   color:inherit;
   background-color: #e76060;
+}
+
+.sidenav-expanded.p-panelmenu .toggle-button .p-panelmenu-header:not(.p-highlight):not(.p-disabled) > a:hover {
+  color: #f9dcdd;
+  background-color: #db3d44;
 }
 
 .sidenav-expanded.p-panelmenu .p-panelmenu-header.p-highlight:not(.p-disabled) > a,

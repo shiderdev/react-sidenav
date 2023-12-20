@@ -1,12 +1,12 @@
 import pageContent from "../utils/page-content";
 
-const Home = () => {
+const Profits = () => {
   return (
     <>
-      <h1>Home</h1>
+      <h1>Stats / Profits</h1>
       <p>{pageContent}</p>
     </>
   );
 };
 
-export default Home;
+export default Profits;

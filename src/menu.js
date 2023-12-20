@@ -72,8 +72,8 @@ const menu = (navigateFactory) => [
       },
       {
         label: "Profits",
-        id: "/statistics/annual-profit",
-        command: navigateFactory("/statistics/annual-profit"),
+        id: "/statistics/profits",
+        command: navigateFactory("/statistics/profits"),
         template: template,
       },
     ],
