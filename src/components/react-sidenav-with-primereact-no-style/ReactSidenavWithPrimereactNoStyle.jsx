@@ -25,7 +25,7 @@ const ReactSidenavWithPrimereactNoStyle = ({ isExpanded, setIsExpanded, menu }) 
         style={{
           visibility: isExpanded ? "visible" : "hidden",
           width: isExpanded ? "240px" : "64px",
-          position: "absolute",
+          position: "fixed",
           top: "120px",
           left: 0,
           bottom: 0,
@@ -47,7 +47,7 @@ const ReactSidenavWithPrimereactNoStyle = ({ isExpanded, setIsExpanded, menu }) 
         style={{
           visibility: isExpanded ? "hidden" : "visible",
           width: isExpanded ? "240px" : "64px",
-          position: "absolute",
+          position: "fixed",
           top: "120px",
           left: 0,
           bottom: 0,

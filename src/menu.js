@@ -19,22 +19,27 @@
 import { matchPath } from "react-router";
 
 const template = (item, options) => {
+  console.log(item, options);
   const isExactMatch = matchPath(window.location.pathname, { path: item.id, exact: true });
   const isRelativeMatch = matchPath(window.location.pathname, { path: item.id });
   return (
     /* custom element */
     <a
+      href="#"
       className={
         options.className +
-        `${isExactMatch ? " route-is-exact-match" : ""} + ${
+        `${isExactMatch ? " route-is-exact-match" : ""}${
           isRelativeMatch ? " route-is-relative-match" : ""
-        }`
+        }${item.id === "/" ? " is-home" : ""}`
       }
       target={item.target}
       onClick={options.onClick}
     >
       {item.icon !== undefined ? <span className={options.iconClassName}></span> : null}
       <span className={options.labelClassName}>{item.label}</span>
+      {options.submenuIconClassName && Array.isArray(item.items) ? (
+        <span class={options.submenuIconClassName}></span>
+      ) : null}
     </a>
   );
 };
@@ -44,11 +49,13 @@ const menu = (navigateFactory) => [
     id: "/",
     icon: "pi pi-home",
     command: navigateFactory("/"),
+    template: template,
   },
   {
     label: "Stats",
     id: "/statistics",
     icon: "pi pi-chart-bar",
+    template: template,
     items: [
       {
         label: "Quarterly reports",
@@ -83,6 +90,7 @@ const menu = (navigateFactory) => [
     id: "/settings",
     icon: "pi pi-sliders-h",
     command: navigateFactory("/settings"),
+    template: template,
   },
 ];
 
