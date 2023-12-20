@@ -49,7 +49,6 @@ const menu = (navigateFactory) => [
     label: "Stats",
     id: "/statistics",
     icon: "pi pi-chart-bar",
-    command: navigateFactory("/statistics"),
     items: [
       {
         label: "Quarterly reports",

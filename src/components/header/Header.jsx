@@ -7,33 +7,33 @@ const Header = ({ demo, onDemoChange, demoEnum }) => {
         <div>
           <input
             type="radio"
-            id={demoEnum.reactSidenav}
+            tabindex="1"
+            id="1"
+            name="demo"
             value={demoEnum.reactSidenav}
             checked={demo === demoEnum.reactSidenav}
           />
-          <label htmlFor={demoEnum.reactSidenav}>{demoEnum.reactSidenav} </label>
+          <label htmlFor="1">{demoEnum.reactSidenav} </label>
         </div>
         <div>
           <input
             type="radio"
-            id={demoEnum.reactSideNavWithPrimereact}
+            id="2"
+            name="demo"
             value={demoEnum.reactSideNavWithPrimereact}
             checked={demo === demoEnum.reactSideNavWithPrimereact}
           />
-          <label htmlFor={demoEnum.reactSideNavWithPrimereact}>
-            {demoEnum.reactSideNavWithPrimereact}
-          </label>
+          <label htmlFor="2">{demoEnum.reactSideNavWithPrimereact}</label>
         </div>
         <div>
           <input
             type="radio"
-            id={demoEnum.reactSideNavWithPrimereactUnstyled}
+            id="3"
+            name="demo"
             value={demoEnum.reactSideNavWithPrimereactUnstyled}
             checked={demo === demoEnum.reactSideNavWithPrimereactUnstyled}
           />
-          <label htmlFor={demoEnum.reactSideNavWithPrimereactUnstyled}>
-            {demoEnum.reactSideNavWithPrimereactUnstyled}
-          </label>
+          <label htmlFor="3">{demoEnum.reactSideNavWithPrimereactUnstyled}</label>
         </div>
       </form>
     </header>
