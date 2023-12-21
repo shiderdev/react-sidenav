@@ -424,8 +424,8 @@ template {
 @font-face {
     font-family: 'primeicons';
     font-display: block;
-    src: url(/react-sidenavd44157bdfa026dc877af.eot);
-    src: url(/react-sidenavd44157bdfa026dc877af.eot?#iefix) format('embedded-opentype'), url(/react-sidenav78172950b335ccdb94e2.woff2) format('woff2'), url(/react-sidenav10d3152104f2208ac82a.woff) format('woff'), url(/react-sidenavea5358601d0a3fd6670b.ttf) format('truetype'), url(/react-sidenave1441b135b3ca9ad643c.svg?#primeicons) format('svg');
+    src: url(d44157bdfa026dc877af.eot);
+    src: url(d44157bdfa026dc877af.eot?#iefix) format('embedded-opentype'), url(78172950b335ccdb94e2.woff2) format('woff2'), url(10d3152104f2208ac82a.woff) format('woff'), url(ea5358601d0a3fd6670b.ttf) format('truetype'), url(e1441b135b3ca9ad643c.svg?#primeicons) format('svg');
     font-weight: normal;
     font-style: normal;
 }
