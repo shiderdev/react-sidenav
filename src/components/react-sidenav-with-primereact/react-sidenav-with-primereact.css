@@ -237,6 +237,7 @@ color: #fff;
   background-color: #db3d44;
   border: none;
   border-radius: 0;
+  padding: 0;
 }
 
 .sidenav-expanded.p-panelmenu .p-panelmenu-content .p-submenu-list > li:first-child {
