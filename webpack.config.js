@@ -11,6 +11,7 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    mainFields: ["browser", "main", "module"],
     modules: ["node_modules", "src"],
   },
   module: {
@@ -28,6 +29,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.html$/,
+        loader: "html-loader",
       },
     ],
   },
@@ -51,6 +56,7 @@ module.exports = {
       publicPath: "/",
       template: "assets/index.html",
     }),
+    new MiniCssExtractPlugin(),
   ],
   output: {
     filename: "main.js",
