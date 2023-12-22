@@ -17,9 +17,9 @@
  */
 
 import { matchPath } from "react-router";
+import publicPath from "./utils/public-path";
 
 const template = (item, options) => {
-  console.log(item, options);
   const isExactMatch = matchPath(window.location.pathname, { path: item.id, exact: true });
   const isRelativeMatch = matchPath(window.location.pathname, { path: item.id });
   return (
@@ -30,7 +30,7 @@ const template = (item, options) => {
         options.className +
         `${isExactMatch ? " route-is-exact-match" : ""}${
           isRelativeMatch ? " route-is-relative-match" : ""
-        }${item.id === "/" ? " is-home" : ""}`
+        }${item.id === `${publicPath}/` ? " is-home" : ""}`
       }
       target={item.target}
       onClick={options.onClick}
@@ -46,50 +46,50 @@ const template = (item, options) => {
 const menu = (navigateFactory) => [
   {
     label: "Home",
-    id: "/",
+    id: `${publicPath}/`,
     icon: "pi pi-home",
-    command: navigateFactory("/"),
+    command: navigateFactory(`/`),
     template: template,
   },
   {
     label: "Stats",
-    id: "/statistics",
+    id: `${publicPath}/statistics`,
     icon: "pi pi-chart-bar",
     template: template,
     items: [
       {
         label: "Quarterly reports",
-        id: "/statistics/quarterly-reports",
-        command: navigateFactory("/statistics/quarterly-reports"),
+        id: `${publicPath}/statistics/quarterly-reports`,
+        command: navigateFactory(`/statistics/quarterly-reports`),
         template: template,
         items: [
           {
             label: "Human resources",
-            id: "/statistics/quarterly-reports/human-resources",
-            command: navigateFactory("/statistics/quarterly-reports/human-resources"),
+            id: `${publicPath}/statistics/quarterly-reports/human-resources`,
+            command: navigateFactory(`/statistics/quarterly-reports/human-resources`),
             template: template,
           },
           {
             label: "Research",
-            id: "/statistics/quarterly-reports/research",
-            command: navigateFactory("/statistics/quarterly-reports/research"),
+            id: `${publicPath}/statistics/quarterly-reports/research`,
+            command: navigateFactory(`/statistics/quarterly-reports/research`),
             template: template,
           },
         ],
       },
       {
         label: "Profits",
-        id: "/statistics/profits",
-        command: navigateFactory("/statistics/profits"),
+        id: `${publicPath}/statistics/profits`,
+        command: navigateFactory(`/statistics/profits`),
         template: template,
       },
     ],
   },
   {
     label: "Settings",
-    id: "/settings",
+    id: `${publicPath}/settings`,
     icon: "pi pi-sliders-h",
-    command: navigateFactory("/settings"),
+    command: navigateFactory(`/settings`),
     template: template,
   },
 ];
