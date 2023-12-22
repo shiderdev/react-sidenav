@@ -20,7 +20,6 @@ import { matchPath } from "react-router";
 import publicPath from "./utils/public-path";
 
 const template = (item, options) => {
-  console.log(item, options);
   const isExactMatch = matchPath(window.location.pathname, { path: item.id, exact: true });
   const isRelativeMatch = matchPath(window.location.pathname, { path: item.id });
   return (
